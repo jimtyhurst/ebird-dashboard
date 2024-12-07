@@ -33,3 +33,5 @@ def get_species_list():
 
 
 SPECIES_LIST = get_species_list()
+
+SUMMARY_MESSAGE = f"{len(SPECIES_LIST)} species sighted from {SIGHTINGS['Date'].min()} to {SIGHTINGS['Date'].max()}"

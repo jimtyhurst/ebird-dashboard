@@ -2,6 +2,13 @@ import folium
 import sightings
 
 
+def build_title_string(n_sightings: int, species_name: str, start_date, end_date) -> str:
+    if n_sightings > 1:
+        return f"{n_sightings} sightings of {species_name} from {start_date} to {end_date}"
+    else:
+        return f"{n_sightings} sighting of {species_name} on {start_date}"
+
+
 # Creates a map centered around the mean latitude and longitude of the sightings.
 # TODO:
 #   * Calculate bounding box from min/max Latitudes, Longitudes, so all sightings are in view.
@@ -23,7 +30,8 @@ def build_map(selected_species: str) -> folium.Map:
     # Adds title
     start_date = species_sightings["Date"].min()
     end_date = species_sightings["Date"].max()
-    title_string = f"Sightings of {selected_species} from {start_date} to {end_date}"
+    n_sightings = species_sightings.shape[0]
+    title_string = build_title_string(n_sightings, selected_species, start_date, end_date)
     title_html = f'<h3 align="center"><b>{title_string}</b></h3>'
     sighting_map.get_root().html.add_child(folium.Element(title_html))
 

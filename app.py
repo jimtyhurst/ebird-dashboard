@@ -1,8 +1,16 @@
+from pathlib import Path
 import htmltools
-from shiny import reactive, render
-from shiny.express import input, ui
+from shiny import reactive
+from shiny.express import input, render, ui
 import sightings
 import mapper
+
+ui.page_opts(title="Bird Sightings", fillable=True)
+
+
+@render.text
+def get_summary_message() -> str:
+    return sightings.SUMMARY_MESSAGE
 
 
 def build_species_choice_list(species: list) -> dict:
@@ -14,7 +22,11 @@ def build_species_choice_list(species: list) -> dict:
 
 species_choices = build_species_choice_list(sightings.SPECIES_LIST)
 
-ui.input_select("selected_species", "Choose one species", choices=list(species_choices.keys()))
+ui.input_select(
+    "selected_species", "Choose one species for map", choices=list(species_choices.keys())
+)
+
+ui.include_css(Path(__file__).parent / "styles.css")
 
 
 @render.ui
