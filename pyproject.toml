@@ -1,0 +1,57 @@
+[project]
+name = "ebird-dashboard"
+version = "0.1.0"
+description = "This is a web application to display bird sighting data from https://ebird.com"
+authors = [
+    {name = "Jim Tyhurst", email = "jim@tyhurst.com"},
+]
+readme = "README.md"
+classifiers = [
+    "Private :: Do Not Upload",
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: End Users/Desktop",
+    "Natural Language :: English",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "folium>=0.18.0",
+    "matplotlib>=3.9.3",
+    "polars>=1.16.0",
+    "seaborn>=0.13.2",
+]
+
+[project.urls]
+Repository = "https://github.com/jimtyhurst/ebird-dashboard.git"
+Issues = "https://github.com/jimtyhurst/ebird-dashboard/issues"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "jupyterlab>=4.3.2",
+    "pytest>=8.3.4",
+    "ruff>=0.8.2",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.format]
+quote-style = "single"
+docstring-code-format = true
