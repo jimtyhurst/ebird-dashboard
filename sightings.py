@@ -28,12 +28,8 @@ def extract_species_sightings(
     )
 
 
-def get_species_choice_list():
-    species = SIGHTINGS["Common Name"].unique().sort().to_list()
-    choice_list = {}
-    for item in species:
-        choice_list[item] = item
-    return choice_list
+def get_species_list():
+    return SIGHTINGS["Common Name"].unique().sort().to_list()
 
 
-SPECIES_CHOICE_LIST = get_species_choice_list()
+SPECIES_LIST = get_species_list()
