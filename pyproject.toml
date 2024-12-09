@@ -24,6 +24,8 @@ dependencies = [
     "matplotlib>=3.9.3",
     "polars>=1.16.0",
     "seaborn>=0.13.2",
+    "shiny>=1.2.1",
+    "shinywidgets>=0.3.4",
 ]
 
 [project.urls]
@@ -34,24 +36,25 @@ Issues = "https://github.com/jimtyhurst/ebird-dashboard/issues"
 dev = [
     "ipykernel>=6.29.5",
     "jupyterlab>=4.3.2",
+    "pre-commit>=4.0.1",
     "pytest>=8.3.4",
     "ruff>=0.8.2",
 ]
 
 [tool.setuptools]
-package-dir = {"" = "src"}
+package-dir = {"" = "."}
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
 
 [tool.pytest.ini_options]
 pythonpath = [
-  "src"
+  "."
 ]
 
 [tool.ruff]
 line-length = 100
 
 [tool.ruff.format]
-quote-style = "single"
+quote-style = "double"
 docstring-code-format = true
