@@ -29,7 +29,9 @@ def build_species_choice_list(species: list) -> dict:
 species_choices = build_species_choice_list(sightings.SPECIES_LIST)
 
 ui.input_select(
-    "selected_species", "Choose one species for map", choices=list(species_choices.keys())
+    "selected_species",
+    "Choose one species for map",
+    choices=list(species_choices.keys()),
 )
 
 ui.include_css(Path(__file__).parent / "styles.css")

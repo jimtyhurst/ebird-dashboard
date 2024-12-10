@@ -2,7 +2,9 @@ import folium
 import sightings
 
 
-def build_title_string(n_sightings: int, species_name: str, start_date, end_date) -> str:
+def build_title_string(
+    n_sightings: int, species_name: str, start_date, end_date
+) -> str:
     if n_sightings > 1:
         return f"{n_sightings} sightings of {species_name} from {start_date} to {end_date}"
     else:
@@ -16,7 +18,10 @@ def build_title_string(n_sightings: int, species_name: str, start_date, end_date
 def build_map(selected_species: str) -> folium.Map:
     species_sightings = sightings.extract_species_sightings(selected_species)
     sighting_map = folium.Map(
-        location=[species_sightings["Latitude"].mean(), species_sightings["Longitude"].mean()],
+        location=[
+            species_sightings["Latitude"].mean(),
+            species_sightings["Longitude"].mean(),
+        ],
         zoom_start=3,
     )
     # Adds markers for each sighting location.
@@ -31,7 +36,9 @@ def build_map(selected_species: str) -> folium.Map:
     start_date = species_sightings["Date"].min()
     end_date = species_sightings["Date"].max()
     n_sightings = species_sightings.shape[0]
-    title_string = build_title_string(n_sightings, selected_species, start_date, end_date)
+    title_string = build_title_string(
+        n_sightings, selected_species, start_date, end_date
+    )
     title_html = f'<h3 align="center"><b>{title_string}</b></h3>'
     sighting_map.get_root().html.add_child(folium.Element(title_html))
 

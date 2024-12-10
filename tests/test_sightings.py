@@ -8,7 +8,9 @@ def test_load_data():
 
 
 def test_extract_species_sightings():
-    df = sightings.extract_species_sightings("American Crow", sightings.SIGHTINGS)
+    df = sightings.extract_species_sightings(
+        "American Crow", sightings.SIGHTINGS
+    )
     assert df.shape[0] > 600
     assert df.shape[1] == 6
 
