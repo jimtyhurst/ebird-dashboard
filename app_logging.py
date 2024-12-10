@@ -1,7 +1,7 @@
 import logging
 import time
 
-LOG_FORMAT = "{asctime};{levelname};{name};{funcName};{message}"
+LOG_FORMAT = "{asctime} UTC;{levelname};{name};{funcName};{message}"
 LOG_FORMATTER = logging.Formatter(LOG_FORMAT, style="{")
 LOG_FORMATTER.converter = time.gmtime
 EBIRD_DASHBOARD_LOG_FILE_NAME = "ebird-dashboard.log"
