@@ -13,7 +13,10 @@ def load_data() -> pl.DataFrame:
         )
         .filter(pl.col("Count").is_not_null())
         .filter(pl.col("Count").gt(0))
-        .sort(by=["Date", "Time", "Count", "Common Name"], descending=[True, True, True, False])
+        .sort(
+            by=["Date", "Time", "Count", "Common Name"],
+            descending=[True, True, True, False],
+        )
     )
 
 
