@@ -5,6 +5,12 @@ from shiny.express import input, render, ui
 import sightings
 import mapper
 
+import logging
+import app_logging
+
+logger = app_logging.get_logger(__name__)
+logger.setLevel(logging.DEBUG)
+
 ui.page_opts(title="Bird Sightings", fillable=True)
 
 
@@ -31,10 +37,12 @@ ui.include_css(Path(__file__).parent / "styles.css")
 
 @render.ui
 def map():
+    logger.debug("render")
     return htmltools.Tag(species_map()._repr_html_())
 
 
 @reactive.calc
 def species_map():
     selected_species = species_choices[input.selected_species()]
+    logger.debug(f"{selected_species=}")
     return mapper.build_map(selected_species)
